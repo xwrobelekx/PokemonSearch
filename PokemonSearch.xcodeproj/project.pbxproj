@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		3B1E6673213EEE740019CFB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1E6672213EEE740019CFB7 /* AppDelegate.swift */; };
-		3B1E6675213EEE740019CFB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1E6674213EEE740019CFB7 /* ViewController.swift */; };
 		3B1E6678213EEE740019CFB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B1E6676213EEE740019CFB7 /* Main.storyboard */; };
 		3B1E667A213EEE760019CFB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1E6679213EEE760019CFB7 /* Assets.xcassets */; };
 		3B1E667D213EEE760019CFB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B1E667B213EEE760019CFB7 /* LaunchScreen.storyboard */; };
+		3B1E6688213EF4360019CFB7 /* PokemonSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1E6687213EF4360019CFB7 /* PokemonSearchViewController.swift */; };
+		3B1E668B213EF5D50019CFB7 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1E668A213EF5D50019CFB7 /* Pokemon.swift */; };
+		3B4F22DA213EFD04006E1066 /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4F22D9213EFD04006E1066 /* PokemonController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3B1E666F213EEE740019CFB7 /* PokemonSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1E6672213EEE740019CFB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3B1E6674213EEE740019CFB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B1E6677213EEE740019CFB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B1E6679213EEE760019CFB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B1E667C213EEE760019CFB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B1E667E213EEE760019CFB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B1E6687213EF4360019CFB7 /* PokemonSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSearchViewController.swift; sourceTree = "<group>"; };
+		3B1E668A213EF5D50019CFB7 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		3B4F22D9213EFD04006E1066 /* PokemonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,56 @@
 		3B1E6671213EEE740019CFB7 /* PokemonSearch */ = {
 			isa = PBXGroup;
 			children = (
+				3B1E668C213EF5E00019CFB7 /* Model */,
+				3B1E6689213EF4470019CFB7 /* ModelController */,
+				3B1E6685213EF3D50019CFB7 /* ViewControllers */,
+				3B1E6686213EF3E00019CFB7 /* UI */,
+				3B1E6684213EF3CB0019CFB7 /* Resources */,
+			);
+			path = PokemonSearch;
+			sourceTree = "<group>";
+		};
+		3B1E6684213EF3CB0019CFB7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				3B1E6672213EEE740019CFB7 /* AppDelegate.swift */,
-				3B1E6674213EEE740019CFB7 /* ViewController.swift */,
-				3B1E6676213EEE740019CFB7 /* Main.storyboard */,
 				3B1E6679213EEE760019CFB7 /* Assets.xcassets */,
 				3B1E667B213EEE760019CFB7 /* LaunchScreen.storyboard */,
 				3B1E667E213EEE760019CFB7 /* Info.plist */,
 			);
-			path = PokemonSearch;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3B1E6685213EF3D50019CFB7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B1E6687213EF4360019CFB7 /* PokemonSearchViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3B1E6686213EF3E00019CFB7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3B1E6676213EEE740019CFB7 /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3B1E6689213EF4470019CFB7 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				3B4F22D9213EFD04006E1066 /* PokemonController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		3B1E668C213EF5E00019CFB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B1E668A213EF5D50019CFB7 /* Pokemon.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +181,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1E6675213EEE740019CFB7 /* ViewController.swift in Sources */,
+				3B1E6688213EF4360019CFB7 /* PokemonSearchViewController.swift in Sources */,
 				3B1E6673213EEE740019CFB7 /* AppDelegate.swift in Sources */,
+				3B1E668B213EF5D50019CFB7 /* Pokemon.swift in Sources */,
+				3B4F22DA213EFD04006E1066 /* PokemonController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5EAUJPVR66;
-				INFOPLIST_FILE = PokemonSearch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PokemonSearch/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5EAUJPVR66;
-				INFOPLIST_FILE = PokemonSearch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PokemonSearch/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
