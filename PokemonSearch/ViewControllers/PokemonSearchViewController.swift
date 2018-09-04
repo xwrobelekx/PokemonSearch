@@ -12,35 +12,34 @@ class PokemonSearchViewController: UIViewController, UISearchBarDelegate{
     
     //MARK: - Outlets
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar        : UISearchBar!
+    @IBOutlet weak var idLabel          : UILabel!
+    @IBOutlet weak var nameLabel        : UILabel!
+    @IBOutlet weak var abilitiesLabel   : UILabel!
+    @IBOutlet weak var pokemonImageView : UIImageView!
     
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var abilitiesLabel: UILabel!
-    
-    @IBOutlet weak var pokemonImageView: UIImageView!
-    
+    //MArk: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchBar.delegate = self
-
-        // Do any additional setup after loading the view.
     }
-
+    
+    
+    //MARK: - Fetch Functions
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        guard let pokemonText = searchBar.text else {return}
+        guard let pokemonText = searchBar.text?.lowercased() else {return}
         
         PokemonController.shared.fetchPokemon(by: pokemonText) { (pokemon) in
             guard let unwrappedPokemon = pokemon else {self.presentAlert(); return}
+            
             DispatchQueue.main.async {
-                
                 self.nameLabel.text = unwrappedPokemon.name
                 self.idLabel.text = "\(String(describing: unwrappedPokemon.id))"
                 self.abilitiesLabel.text = "Abilities: \(unwrappedPokemon.abilitiesName.joined(separator: ", "))"
             }
+            
             PokemonController.shared.fetchImage(pokemon: unwrappedPokemon, completion: { (image) in
                 guard let unwrappedImage = image else {
                     DispatchQueue.main.async {
@@ -58,7 +57,6 @@ class PokemonSearchViewController: UIViewController, UISearchBarDelegate{
         searchBar.resignFirstResponder()
     }
     
-    
     func presentAlert() {
         let alert = UIAlertController(title: "WRONG  POKEMON NAME", message: " 🤬🤬🤬🤬  ...or it doesnt have an image 😪 ", preferredStyle: .alert)
         let dismiss = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
@@ -66,8 +64,6 @@ class PokemonSearchViewController: UIViewController, UISearchBarDelegate{
         self.present(alert, animated: true)
         
     }
-    
-    
-    
-
 }
+
+
