@@ -14,7 +14,7 @@ struct Pokemon: Decodable {
     let name: String
     let abilities: [AbilitiesDictionary]
     let id: Int
-    let image: SpritesDictionary
+    let spritesDictionary: SpritesDictionary
 }
 
 
@@ -44,18 +44,18 @@ struct SpritesDictionary: Decodable {
 
 
 
-let pokemon = Pokemon(name: "Pikachu", abilities: [abilities], id: 25, image: image)
-
-let abilities = AbilitiesDictionary(ability: ability)
-
-let ability = AbilityName(name: "Sleep All Day")
-
-let image = SpritesDictionary(image: URL(string: "htttp://www.lol.com/picture")!)
-
-
-
-let pikachuAbilityName = pokemon.abilities[0].ability.name
-
+//let pokemon = Pokemon(name: "Pikachu", abilities: [abilities], id: 25, image: image)
+//
+//let abilities = AbilitiesDictionary(ability: ability)
+//
+//let ability = AbilityName(name: "Sleep All Day")
+//
+//let image = SpritesDictionary(image: URL(string: "htttp://www.lol.com/picture")!)
+//
+//
+//
+//let pikachuAbilityName = pokemon.abilities[0].ability.name
+//
 
 
 
