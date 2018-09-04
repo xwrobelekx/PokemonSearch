@@ -6,7 +6,7 @@
 //  Copyright © 2018 Kamil Wrobel. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 struct Pokemon: Decodable {
@@ -15,20 +15,34 @@ struct Pokemon: Decodable {
     let abilities: [AbilitiesDictionary]
     let id: Int
     let spritesDictionary: SpritesDictionary
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case abilities
+        case id
+        case spritesDictionary = "sprites"
+    }
+    
+    var abilitiesName: [String] {
+        return abilities.compactMap({$0.ability.name})
+    }
+    
+    
+    struct AbilitiesDictionary: Decodable {
+        let ability: AbilityName
+        
+        struct AbilityName: Decodable {
+            let name: String
+        }
+        
+    }
+    
 }
 
-
-struct AbilitiesDictionary: Decodable {
-    let ability: AbilityName
-}
-
-
-struct AbilityName: Decodable {
-    let name: String
-}
 
 
 struct SpritesDictionary: Decodable {
+    
     let image: URL
     
     //this enum is for the keys that matches json so we can have a better naming convention

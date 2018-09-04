@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokemonSearchViewController: UIViewController {
+class PokemonSearchViewController: UIViewController, UISearchBarDelegate{
     
     //MARK: - Outlets
     
@@ -23,25 +23,51 @@ class PokemonSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
 
         // Do any additional setup after loading the view.
     }
 
-
-    
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        guard let pokemonText = searchBar.text else {return}
+        
+        PokemonController.shared.fetchPokemon(by: pokemonText) { (pokemon) in
+            guard let unwrappedPokemon = pokemon else {self.presentAlert(); return}
+            DispatchQueue.main.async {
+                
+                self.nameLabel.text = unwrappedPokemon.name
+                self.idLabel.text = "\(String(describing: unwrappedPokemon.id))"
+                self.abilitiesLabel.text = "Abilities: \(unwrappedPokemon.abilitiesName.joined(separator: ", "))"
+            }
+            PokemonController.shared.fetchImage(pokemon: unwrappedPokemon, completion: { (image) in
+                guard let unwrappedImage = image else {
+                    DispatchQueue.main.async {
+                        self.presentAlert()
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.pokemonImageView.image = unwrappedImage
+                }
+            })
+        }
+        //dismiss keyboard
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
-    */
+    
+    
+    func presentAlert() {
+        let alert = UIAlertController(title: "WRONG  POKEMON NAME", message: " 🤬🤬🤬🤬  ...or it doesnt have an image 😪 ", preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alert.addAction(dismiss)
+        self.present(alert, animated: true)
+        
+    }
+    
+    
+    
 
 }
